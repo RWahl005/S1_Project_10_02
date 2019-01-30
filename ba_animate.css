@@ -14,48 +14,80 @@
 
 /* Transition Styles */
 nav a {
+    /* Add in the background image for the links. */
     background-image: url(ba_target.png);
+    /* Set the position to center both horizontally and vertically */
     background-position: center center;
+    /* Prevents the background from repeating */
     background-repeat: no-repeat;
+    /* Sets the size to 0% so that it is hidden by default. */
     background-size: 0%;
+    /* Set the text color for the links */
     color: rgb(253, 240, 133);
+    /* Add in a transition for the background-size that lasts 0.3 seconds. */
     transition: background-size 0.3s;
+    /* Add in a transition for the font color that lasts 0.8 seconds. */
     transition: color 0.8s;
 }
 
 nav a:hover {
+    /* Set the background size to 100% (so it is shown) */
     background-size: 100%;
+    /* Set the font color to a pinkish color. */
     color: rgb(244, 130, 130);
 }
 
 
 /* Animation Styles */
+/* 
+    Key frames are animations for certain objects. 
+    Keyframes work by describing percentages instead of seconds. For example with position the computer will transition to the positions based upon the percentages. The shorter the percentage, the less time it takes. 
+*/
+/* A keyframe with the name of moveRed
+    It is used to move the red ball.
+*/
 @keyframes moveRed {
+
+    /* At 0% of the animation. */
     0% {
+        /* Sets the left position to 0. */
         left: 0px;
+        /* Sets a shadow filter on the ball with an offset of -40px and 20px */
         filter: drop-shadow(-40px 20px 25px rgb(51, 51, 51));
     }
 
+    /* 49% of the animation */
     49% {
+        /* Scales the object to full. */
         transform: scaleX(1);
     }
 
+    /* 50% of the animation */
     50% {
+        /* Sets the left position to 380px */
         left: 380px;
+        /* Adds in a drop shadow filtering. */
         filter: drop-shadow(0px 0px 0px rgb(51, 51, 51));
+        /* Adds in a scale transfrom of 0.4 (Makes the ball look squished) */
         transform: scaleX(0.4);
     }
 
+    /* 51% of the animation */
     51% {
+        /* Sets the scale transform of x to 1 */
         transform: scaleX(1.0);
     }
 
+    /* 100% of the animation. */
     100% {
+        /* Sets the left position to 0. */
         left: 0px;
+        /* Sets the direction of the drop shadow. */
         filter: drop-shadow(-40px 20px 25px rgb(51, 51, 51));
     }
 }
 
+/* A key frame nemed blue. (Contains the same percentages for the most part. The only difference are the positions as the blue ball comes from the right) */
 @keyframes moveBlue {
     0% {
         right: 0px;
@@ -82,24 +114,30 @@ nav a:hover {
     }
 }
 
+/* Keyframes named show text. */
 @keyframes showText {
     0% {
+        /* Sets the opacity to 0 at 0% */
         opacity: 0;
     }
 
     49% {
+        /* Sets the opacity to 0 at 49%. It does this so it does not transition slowly to full opacity, instead it instantly appears. */
         opacity: 0;
     }
 
     51% {
+        /* Sets the opacity to 1 at 51%.*/
         opacity: 1;
     }
 
     100% {
+        /* Sets the opacity to 1 at 100% */
         opacity: 1;
     }
 }
 
+/* A keyframes named hideText. It does the opposite of what showText does. */
 @keyframes hideText {
     0% {
         opacity: 1;
@@ -118,16 +156,22 @@ nav a:hover {
     }
 }
 
+/* For the red ball. */
 #redBall {
+    /* Sets the animation to moveRed. The animation takes 5 seconds. The passage of time is linear. The animation loops for infinity. */
     animation: moveRed 5s linear infinite;
 }
 
 #blueBall {
+    /* Sets the animation to moveBlue. The animation takes 5 seconds. The passage of time is linear. The animation loops for infinity. */
     animation: moveBlue 5s linear infinite;
 }
 
+/* The text box for the red and blue ball speeds. */
 div#redSpeed1,
 div#blueSpeed1 {
+    /* Sets the animation to hideText for 5 seconds (matches the red and blue ball animation) with a linear time passage and loops for infiity. */
     animation: hideText 5s linear infinite;
+    /* The same animation as above except for showText. */
     animation: showText 5s linear infinite;
 }
